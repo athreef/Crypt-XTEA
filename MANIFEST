@@ -7,11 +7,7 @@ META.yml
 Makefile.PL
 README
 XTEA.xs
-const-c.inc
-const-xs.inc
 dist.ini
-fallback/const-c.inc
-fallback/const-xs.inc
 lib/Crypt/XTEA.pm
 ppport.h
 t/001-xtea.t

@@ -7,11 +7,7 @@
 
 #include "xtea.h"
 
-#include "const-c.inc"
-
 MODULE = Crypt::XTEA    PACKAGE = Crypt::XTEA
-
-INCLUDE: const-xs.inc
 
 PROTOTYPES: ENABLE
 

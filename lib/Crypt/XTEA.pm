@@ -9,35 +9,7 @@ use utf8;
 use Carp;
 use List::Util qw(all);
 
-require Exporter;
-use AutoLoader;
-
-our $VERSION = '0.01';
-
-sub AUTOLOAD {
-    # This AUTOLOAD is used to 'autoload' constants from the constant()
-    # XS function.
-
-    my $constname;
-    our $AUTOLOAD;
-    ($constname = $AUTOLOAD) =~ s/.*:://;
-    croak "&Crypt::XTEA::constant not defined" if $constname eq 'constant';
-    my ($error, $val) = constant($constname);
-    croak $error if $error;
-
-    {
-        no strict 'refs';
-        # Fixed between 5.005_53 and 5.005_61
-        if ($] >= 5.00561) {
-            *$AUTOLOAD = sub () { $val };
-        }
-        else {
-            *$AUTOLOAD = sub { $val };
-        }
-    }
-
-    goto &$AUTOLOAD;
-}
+our $VERSION = '0.0101'; # VERSION
 
 require XSLoader;
 XSLoader::load('Crypt::XTEA', $VERSION);
@@ -143,14 +115,14 @@ Crypt::XTEA - Implementation of the eXtended Tiny Encryption Algorithm
 
 =head1 VERSION
 
-version 0.01
+version 0.0101
 
 =head1 SYNOPSIS
 
-   use Crypt::XTEA_PP;
+   use Crypt::XTEA;
    use Crypt::CBC;
 
-   my $xtea = Crypt::XTEA_PP->new( $key );
+   my $xtea = Crypt::XTEA->new( $key );
    my $cbc = Crypt::CBC->new( -cipher => $xtea );
 
    my $text = 'The quick brown fox jumps over the lazy dog.';
@@ -166,7 +138,7 @@ and the algorithm was presented in an unpublished technical report in 1997 (Need
 It is not subject to any patents.
 
 Like TEA, XTEA is a 64-bit block Feistel cipher with a 128-bit key and a suggested 64 rounds.
-But in Crypt::XTEA_PP, the recommended value for $rounds is 32.
+But in Crypt::XTEA, the recommended value for $rounds is 32.
 
 This module implements XTEA encryption. It supports the Crypt::CBC interface, with the following functions.
 
@@ -178,13 +150,13 @@ Returns the maximum XTEA key size, 16 bytes.
 
 =head2 blocksize
 
-Returns the XTEA block size, which is 8 bytes. This function exists so that Crypt::XTEA_PP can work with Crypt::CBC.
+Returns the XTEA block size, which is 8 bytes. This function exists so that Crypt::XTEA can work with Crypt::CBC.
 
 =head2 new
 
-    my $xtea = Crypt::XTEA_PP->new( $key, $rounds );
+    my $xtea = Crypt::XTEA->new( $key, $rounds );
 
-This creates a new Crypt::XTEA_PP object with the specified key.
+This creates a new Crypt::XTEA object with the specified key.
 The optional rounds parameter specifies the number of rounds of encryption to perform, and defaults to 32.
 
 =head2 encrypt
