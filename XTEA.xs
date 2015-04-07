@@ -20,16 +20,16 @@ encrypt_block_in_c(self, blocks)
         unsigned int i;
         uint32_t v[2], k[4], num_rounds;
         AV * results;
-        results = (AV *)sv_2mortal((SV *)newAV());
+        results = MUTABLE_AV(sv_2mortal(MUTABLE_SV(newAV())));
     CODE:
-        obj = (HV*) SvRV(self);
+        obj = MUTABLE_HV(SvRV(self));
 
         for (i = 0; i < 2; i++) {
             v[i] = (uint32_t) SvUV(*av_fetch(blocks, i, 0));
         }
 
         for (i = 0; i < 4; i++) {
-            k[i] = (uint32_t) SvUV(*av_fetch((AV*) SvRV(*hv_fetch(obj, "key", 3, 0)), i, 0));
+            k[i] = (uint32_t) SvUV(*av_fetch(MUTABLE_AV(SvRV(*hv_fetch(obj, "key", 3, 0))), i, 0));
         }
 
         num_rounds = (uint32_t) SvUV(*hv_fetch(obj, "rounds", 6, 0));
@@ -40,7 +40,7 @@ encrypt_block_in_c(self, blocks)
             av_store(results, i, newSVuv(v[i]));
         }
 
-        RETVAL = newRV((SV *)results);
+        RETVAL = newRV(MUTABLE_SV(results));
     OUTPUT:
         RETVAL
 
@@ -53,16 +53,16 @@ decrypt_block_in_c(self, blocks)
         unsigned int i;
         uint32_t v[2], k[4], num_rounds;
         AV * results;
-        results = (AV *)sv_2mortal((SV *)newAV());
+        results = MUTABLE_AV(sv_2mortal(MUTABLE_SV(newAV())));
     CODE:
-        obj = (HV*) SvRV(self);
+        obj = MUTABLE_HV(SvRV(self));
 
         for (i = 0; i < 2; i++) {
             v[i] = (uint32_t) SvUV(*av_fetch(blocks, i, 0));
         }
 
         for (i = 0; i < 4; i++) {
-            k[i] = (uint32_t) SvUV(*av_fetch((AV*) SvRV(*hv_fetch(obj, "key", 3, 0)), i, 0));
+            k[i] = (uint32_t) SvUV(*av_fetch(MUTABLE_AV(SvRV(*hv_fetch(obj, "key", 3, 0))), i, 0));
         }
 
         num_rounds = (uint32_t) SvUV(*hv_fetch(obj, "rounds", 6, 0));
@@ -73,6 +73,6 @@ decrypt_block_in_c(self, blocks)
             av_store(results, i, newSVuv(v[i]));
         }
 
-        RETVAL = newRV((SV *)results);
+        RETVAL = newRV(MUTABLE_SV(results));
     OUTPUT:
         RETVAL
