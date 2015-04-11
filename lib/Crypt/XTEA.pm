@@ -9,7 +9,7 @@ use utf8;
 use Carp;
 use List::Util qw(all);
 
-our $VERSION = '0.0102'; # VERSION
+our $VERSION = '0.0103'; # VERSION
 
 require XSLoader;
 XSLoader::load('Crypt::XTEA', $VERSION);
@@ -115,7 +115,7 @@ Crypt::XTEA - Implementation of the eXtended Tiny Encryption Algorithm
 
 =head1 VERSION
 
-version 0.0102
+version 0.0103
 
 =head1 SYNOPSIS
 

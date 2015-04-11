@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-use 5.010;
+use 5.010001;
 
 use ExtUtils::MakeMaker;
 
@@ -15,13 +15,13 @@ my %WriteMakefileArgs = (
   "DISTNAME" => "Crypt-XTEA",
   "EXE_FILES" => [],
   "LICENSE" => "perl",
-  "MIN_PERL_VERSION" => "5.010",
+  "MIN_PERL_VERSION" => "5.010001",
   "NAME" => "Crypt::XTEA",
   "PREREQ_PM" => {
     "Carp" => "1.3301",
     "List::Util" => "1.38"
   },
-  "VERSION" => "0.0102",
+  "VERSION" => "0.0103",
   "test" => {
     "TESTS" => "t/*.t"
   }
