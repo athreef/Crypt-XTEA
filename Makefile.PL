@@ -21,7 +21,7 @@ my %WriteMakefileArgs = (
     "Carp" => "1.3301",
     "List::Util" => "1.38"
   },
-  "VERSION" => "0.0103",
+  "VERSION" => "0.0104",
   "test" => {
     "TESTS" => "t/*.t"
   }

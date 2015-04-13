@@ -18,4 +18,4 @@ requires:
   Carp: '1.3301'
   List::Util: '1.38'
   perl: '5.010001'
-version: '0.0103'
+version: '0.0104'

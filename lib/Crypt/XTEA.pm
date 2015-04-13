@@ -9,7 +9,7 @@ use utf8;
 use Carp;
 use List::Util qw(all);
 
-our $VERSION = '0.0103'; # VERSION
+our $VERSION = '0.0104'; # VERSION
 
 require XSLoader;
 XSLoader::load('Crypt::XTEA', $VERSION);
@@ -96,8 +96,8 @@ sub decrypt_block {
 sub key_setup {
     my $key_str = shift;
     croak( sprintf( 'key must be %s bytes long', $KEY_SIZE ) ) if length( $key_str ) != $KEY_SIZE;
-    my @tea_key = unpack 'N*', $key_str;
-    return \@tea_key;
+    my @xtea_key = unpack 'N*', $key_str;
+    return \@xtea_key;
 }
 
 
@@ -115,7 +115,7 @@ Crypt::XTEA - Implementation of the eXtended Tiny Encryption Algorithm
 
 =head1 VERSION
 
-version 0.0103
+version 0.0104
 
 =head1 SYNOPSIS
 
