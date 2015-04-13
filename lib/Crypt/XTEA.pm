@@ -8,8 +8,9 @@ use utf8;
 
 use Carp;
 use List::Util qw(all);
+use Scalar::Util::Numeric qw(isint);
 
-our $VERSION = '0.0104'; # VERSION
+our $VERSION = '0.0105'; # VERSION
 
 require XSLoader;
 XSLoader::load('Crypt::XTEA', $VERSION);
@@ -37,13 +38,13 @@ sub new {
     if ( my $ref_of_key = ref( $key ) ) {
         croak( sprintf( 'key must be a %d-byte-long STRING or a reference of ARRAY', $KEY_SIZE ) ) if not $ref_of_key eq 'ARRAY';
         croak( sprintf( 'key must has %d elements if key is a reference of ARRAY', $ELEMENTS_IN_KEY ) ) if scalar( @{ $key } ) != $ELEMENTS_IN_KEY;
-        croak( 'each element of key must be a NUMBER if key is a reference of ARRAY' ) if not all { /^-?\d+$/ } @{ $key };
+        croak( 'each element of key must be a 32bit Integer if key is a reference of ARRAY' ) if not all { isint( $_ ) != 0 } @{ $key };
         $xtea_key = $key;
     } else {
         croak( sprintf( 'key must be a %d-byte-long STRING or a reference of ARRAY', $KEY_SIZE ) ) if length $key != $KEY_SIZE;
         $xtea_key = key_setup($key);
     }
-    croak( 'rounds must be a positive NUMBER' ) if $rounds !~ /^\d+$/;
+    croak( 'rounds must be a positive NUMBER' ) if isint( $rounds ) != 1;
     my $self = {
         key => $xtea_key,
         rounds => $rounds,
@@ -55,7 +56,7 @@ sub new {
 sub encrypt {
     my $self = shift;
     my $plain_text = shift;
-    croak( sprintf( 'block size must be %d', $BLOCK_SIZE) ) if length($plain_text) != $BLOCK_SIZE;
+    croak( sprintf( 'plain_text block size must be %d bytes', $BLOCK_SIZE) ) if length($plain_text) != $BLOCK_SIZE;
     my @block = unpack 'N*', $plain_text;
     my $cipher_text_ref = $self->encrypt_block( \@block );
     return pack( 'N*', @{$cipher_text_ref} );
@@ -65,7 +66,7 @@ sub encrypt {
 sub decrypt {
     my $self = shift;
     my $cipher_text = shift;
-    croak( sprintf( 'block size must be %d', $BLOCK_SIZE) ) if length($cipher_text) != $BLOCK_SIZE;
+    croak( sprintf( 'cipher_text size must be %d bytes', $BLOCK_SIZE) ) if length($cipher_text) != $BLOCK_SIZE;
     my @block = unpack 'N*', $cipher_text;
     my $plain_text_ref = $self->decrypt_block( \@block );
     return pack( 'N*', @{$plain_text_ref} );
@@ -115,7 +116,7 @@ Crypt::XTEA - Implementation of the eXtended Tiny Encryption Algorithm
 
 =head1 VERSION
 
-version 0.0104
+version 0.0105
 
 =head1 SYNOPSIS
 

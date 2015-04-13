@@ -19,9 +19,10 @@ my %WriteMakefileArgs = (
   "NAME" => "Crypt::XTEA",
   "PREREQ_PM" => {
     "Carp" => "1.3301",
-    "List::Util" => "1.38"
+    "List::Util" => "1.38",
+    "Scalar::Util::Numeric" => "0.40"
   },
-  "VERSION" => "0.0104",
+  "VERSION" => "0.0105",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -31,7 +32,8 @@ my %WriteMakefileArgs = (
 my %FallbackPrereqs = (
   "Carp" => "1.3301",
   "ExtUtils::MakeMaker" => 0,
-  "List::Util" => "1.38"
+  "List::Util" => "1.38",
+  "Scalar::Util::Numeric" => "0.40"
 );
 
 

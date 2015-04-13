@@ -17,5 +17,6 @@ name: Crypt-XTEA
 requires:
   Carp: '1.3301'
   List::Util: '1.38'
+  Scalar::Util::Numeric: '0.40'
   perl: '5.010001'
-version: '0.0104'
+version: '0.0105'
