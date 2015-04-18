@@ -10,7 +10,7 @@ use Carp;
 use List::Util qw(all);
 use Scalar::Util::Numeric qw(isint);
 
-our $VERSION = '0.0105'; # VERSION
+our $VERSION = '0.0106'; # VERSION
 
 require XSLoader;
 XSLoader::load('Crypt::XTEA', $VERSION);
@@ -116,7 +116,7 @@ Crypt::XTEA - Implementation of the eXtended Tiny Encryption Algorithm
 
 =head1 VERSION
 
-version 0.0105
+version 0.0106
 
 =head1 SYNOPSIS
 
@@ -175,6 +175,8 @@ Decrypts blocksize() bytes of $cipher_text and returns the corresponding plainte
 =head1 SEE ALSO
 
 L<Crypt::CBC>
+
+L<Crypt::XTEA_PP>
 
 =head1 AUTHOR
 

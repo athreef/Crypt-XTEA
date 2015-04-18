@@ -34,7 +34,7 @@ encrypt_block_in_c(self, blocks)
 
         num_rounds = (uint32_t) SvUV(*hv_fetch(obj, "rounds", 6, 0));
 
-        encipher( num_rounds, v, k );
+        xtea_encrypt( num_rounds, v, k );
 
         for (i = 0; i < 2; i++) {
             av_store(results, i, newSVuv(v[i]));
@@ -67,7 +67,7 @@ decrypt_block_in_c(self, blocks)
 
         num_rounds = (uint32_t) SvUV(*hv_fetch(obj, "rounds", 6, 0));
 
-        decipher( num_rounds, v, k );
+        xtea_decrypt( num_rounds, v, k );
 
         for (i = 0; i < 2; i++) {
             av_store(results, i, newSVuv(v[i]));
