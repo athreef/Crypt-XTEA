@@ -19,4 +19,4 @@ requires:
   List::Util: '1.38'
   Scalar::Util::Numeric: '0.40'
   perl: '5.010001'
-version: '0.0106'
+version: '0.0107'
