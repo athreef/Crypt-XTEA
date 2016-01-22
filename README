@@ -1,5 +1,8 @@
+The game protocol of http://tibia.com uses XTEA with little endian 32-bit integers. This module extends Crypt::XTEA by an optional little_endian parameter in the constructor.
 
+Version 0.1
 
+Original README:
 This archive contains the distribution Crypt-XTEA,
 version 0.0106:
 

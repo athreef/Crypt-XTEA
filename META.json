@@ -1,7 +1,8 @@
 {
    "abstract" : "Implementation of the eXtended Tiny Encryption Algorithm",
    "author" : [
-      "Kars Wang <jahiy@cpan.org>"
+      "Kars Wang <jahiy@cpan.org>",
+      "Ahmad Fatoum <ahmad@a3f.at>"
    ],
    "dynamic_config" : 0,
    "generated_by" : "Dist::Zilla version 5.034, CPAN::Meta::Converter version 2.150001",
@@ -12,7 +13,7 @@
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
       "version" : "2"
    },
-   "name" : "Crypt-XTEA",
+   "name" : "Crypt-XTEA-LE",
    "prereqs" : {
       "configure" : {
          "requires" : {

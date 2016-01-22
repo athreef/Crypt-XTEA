@@ -2,6 +2,7 @@
 abstract: 'Implementation of the eXtended Tiny Encryption Algorithm'
 author:
   - 'Kars Wang <jahiy@cpan.org>'
+  - 'Ahmad Fatoum <ahmad@a3f.at>'
 build_requires:
   perl: '5.010001'
 configure_requires:
@@ -13,7 +14,7 @@ license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: '1.4'
-name: Crypt-XTEA
+name: Crypt-XTEA-LE
 requires:
   Carp: '1.3301'
   List::Util: '1.38'
