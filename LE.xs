@@ -7,7 +7,7 @@
 
 #include "xtea.h"
 
-MODULE = Crypt::XTEA    PACKAGE = Crypt::XTEA
+MODULE = Crypt::XTEA::LE    PACKAGE = Crypt::XTEA::LE
 
 PROTOTYPES: ENABLE
 

@@ -10,7 +10,7 @@ use Carp;
 use List::Util qw(all);
 use Scalar::Util::Numeric qw(isint);
 
-our $VERSION = '0.1'; # VERSION
+our $VERSION = '0.0106'; # VERSION
 
 require XSLoader;
 XSLoader::load('Crypt::XTEA::LE', $VERSION);
@@ -119,7 +119,7 @@ Crypt::XTEA::LE - Implementation of the eXtended Tiny Encryption Algorithm (with
 
 =head1 VERSION
 
-version 0.1
+version 0.0106
 
 =head1 SYNOPSIS
 

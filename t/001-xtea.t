@@ -4,7 +4,7 @@ use utf8;
 
 use Test::More;
 
-use_ok( 'Crypt::XTEA' );
+use_ok( 'Crypt::XTEA::LE' );
 
 my @tests = (
     {
@@ -20,7 +20,7 @@ my @tests = (
 );
 
 for my $test ( @tests ) {
-    my $xtea = new_ok( 'Crypt::XTEA' => [ $test->{key} ] );
+    my $xtea = new_ok( 'Crypt::XTEA::LE' => [ $test->{key} ] );
     my $cipher_hex = unpack 'H*', $xtea->encrypt($test->{plain});
     is( $cipher_hex, $test->{cipher_hex}, 'encryption test' );
     my $plain = $xtea->decrypt( pack( 'H*', $cipher_hex ) );

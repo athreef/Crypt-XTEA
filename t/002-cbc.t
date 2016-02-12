@@ -8,7 +8,7 @@ eval { require Crypt::CBC; };
 
 plan skip_all => 'Crypt::CBC not installed' if $@;
 
-use_ok( 'Crypt::XTEA' );
+use_ok( 'Crypt::XTEA::LE' );
 
 my @tests = (
     {
@@ -24,7 +24,7 @@ my @tests = (
 );
 
 for my $test (@tests) {
-    my $xtea = new_ok( 'Crypt::XTEA' => [ $test->{key} ] );
+    my $xtea = new_ok( 'Crypt::XTEA::LE' => [ $test->{key} ] );
     my $cbc = new_ok( 'Crypt::CBC' => [ -cipher => $xtea ] );
 
     my $cipher = $cbc->encrypt($test->{plain});

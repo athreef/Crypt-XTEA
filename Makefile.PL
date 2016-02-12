@@ -12,11 +12,11 @@ my %WriteMakefileArgs = (
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => 0
   },
-  "DISTNAME" => "Crypt-XTEA",
+  "DISTNAME" => "Crypt-XTEA-LE",
   "EXE_FILES" => [],
   "LICENSE" => "perl",
   "MIN_PERL_VERSION" => "5.010001",
-  "NAME" => "Crypt::XTEA",
+  "NAME" => "Crypt::XTEA::LE",
   "PREREQ_PM" => {
     "Carp" => "1.3301",
     "List::Util" => "1.38",
