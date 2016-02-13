@@ -100,7 +100,7 @@ sub key_setup {
     my $key_str = shift;
 	my $endianness = (shift) ? 'V*' : 'N*';
     croak( sprintf( 'key must be %s bytes long', $KEY_SIZE ) ) if length( $key_str ) != $KEY_SIZE;
-    my @xtea_key = unpack $endianness, $key_str;
+    my @xtea_key = unpack "$endianness", $key_str;
     return \@xtea_key;
 }
 
