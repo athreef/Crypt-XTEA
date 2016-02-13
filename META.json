@@ -2,7 +2,7 @@
    "abstract" : "Implementation of the eXtended Tiny Encryption Algorithm",
    "author" : [
       "Kars Wang <jahiy@cpan.org>",
-      "Ahmad Fatoum <ahmad@a3f.at>"
+      "Ahmad Fatoum <athreef@cpan.org>"
    ],
    "dynamic_config" : 0,
    "generated_by" : "Dist::Zilla version 5.034, CPAN::Meta::Converter version 2.150001",
@@ -36,6 +36,6 @@
       }
    },
    "release_status" : "stable",
-   "version" : "0.0106"
+   "version" : "0.0107"
 }
 

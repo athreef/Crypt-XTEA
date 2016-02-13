@@ -10,7 +10,7 @@ use Carp;
 use List::Util qw(all);
 use Scalar::Util::Numeric qw(isint);
 
-our $VERSION = '0.0106'; # VERSION
+our $VERSION = '0.0107'; # VERSION
 
 require XSLoader;
 XSLoader::load('Crypt::XTEA::LE', $VERSION);
@@ -115,11 +115,11 @@ __END__
 
 =head1 NAME
 
-Crypt::XTEA::LE - Implementation of the eXtended Tiny Encryption Algorithm (with little-endian support)
+Crypt::XTEA::LE - Implementation of the eXtended Tiny Encryption Algorithm with little-endian support
 
 =head1 VERSION
 
-version 0.0106
+version 0.0107
 
 =head1 SYNOPSIS
 
@@ -163,23 +163,24 @@ Returns the XTEA::LE block size, which is 8 bytes. This function exists so that 
 This creates a new Crypt::XTEA::LE object with the specified key.
 The optional rounds parameter specifies the number of rounds of encryption to perform, and defaults to 32.
 If the key is provided as a scalar string, it is split to a series of 4x big-endian 32-bit integers. If little-endian order is required instead, the optional little_endian key can be set to 1.
+
 =head2 encrypt
 
     $cipher_text = $xtea->encrypt($plain_text);
 
 Encrypts blocksize() bytes of $plain_text and returns the corresponding ciphertext.
-By default, the block is interpreted as 2x little-endian 32-bit integers. if little_endian => 1 was specified during new(), the block will be split into two little-endian integers instead.
+By default, the block is interpreted as 2x big-endian 32-bit integers. if little_endian => 1 was specified during new(), the block will be split into two little-endian integers instead.
 
 =head2 decrypt
 
     $plain_text = $xtea->decrypt($cipher_text);
 
 Decrypts blocksize() bytes of $cipher_text and returns the corresponding plaintext.
-By default, the block is interpreted as 2x little-endian 32-bit integers. if little_endian => 1 was specified during new(), the block will be split into two little-endian integers instead.
+By default, the block is interpreted as 2x big-endian 32-bit integers. if little_endian => 1 was specified during new(), the block will be split into two little-endian integers instead.
 
 =head1 SEE ALSO
 
-L<Crypt::XTEA>
+Based on L<Crypt::XTEA>
 
 L<Crypt::CBC>
 
@@ -188,6 +189,7 @@ L<Crypt::XTEA_PP>
 =head1 AUTHOR
 
 Kars Wang <jahiy@cpan.org>
+Ahmad Fatoum <athreef@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 

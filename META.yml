@@ -2,7 +2,7 @@
 abstract: 'Implementation of the eXtended Tiny Encryption Algorithm'
 author:
   - 'Kars Wang <jahiy@cpan.org>'
-  - 'Ahmad Fatoum <ahmad@a3f.at>'
+  - 'Ahmad Fatoum <athreef@cpan.org>'
 build_requires:
   perl: '5.010001'
 configure_requires:
@@ -20,4 +20,4 @@ requires:
   List::Util: '1.38'
   Scalar::Util::Numeric: '0.40'
   perl: '5.010001'
-version: '0.0106'
+version: '0.0107'
