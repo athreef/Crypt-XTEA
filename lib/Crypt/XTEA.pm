@@ -163,19 +163,20 @@ Returns the XTEA block size, which is 8 bytes. This function exists so that Cryp
 This creates a new Crypt::XTEA object with the specified key.
 The optional rounds parameter specifies the number of rounds of encryption to perform, and defaults to 32.
 If the key is provided as a scalar string, it is split to a series of 4x big-endian 32-bit integers. If little-endian order is required instead, the optional little_endian key can be set to 1.
+
 =head2 encrypt
 
     $cipher_text = $xtea->encrypt($plain_text);
 
 Encrypts blocksize() bytes of $plain_text and returns the corresponding ciphertext.
-By default, the block is interpreted as 2x little-endian 32-bit integers. if little_endian => 1 was specified during new(), the block will be split into two little-endian integers instead.
+By default, the block is interpreted as 2x big-endian 32-bit integers. if little_endian => 1 was specified during new(), the block will be split into two little-endian integers instead.
 
 =head2 decrypt
 
     $plain_text = $xtea->decrypt($cipher_text);
 
 Decrypts blocksize() bytes of $cipher_text and returns the corresponding plaintext.
-By default, the block is interpreted as 2x little-endian 32-bit integers. if little_endian => 1 was specified during new(), the block will be split into two little-endian integers instead.
+By default, the block is interpreted as 2x big-endian 32-bit integers. if little_endian => 1 was specified during new(), the block will be split into two little-endian integers instead.
 
 =head1 SEE ALSO
 
